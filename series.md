@@ -20,7 +20,7 @@ $$ \sum_1^n{x} = \frac{n}{2}(n + 1) $$
 $$ \sum_1^n{x^2} = \frac{n}{6}(n + 1)(2n + 1) $$
 
 ## Geometric
-For the first n terms (up to \( r^{n-1} \))
+For the first n terms (up to \\( r^{n-1} \\))
 
 $$ \sum_{k=0}^{n-1}{ar^k} = a\frac{1-r^n}{1-r} $$
 
