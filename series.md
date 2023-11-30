@@ -1,3 +1,10 @@
+---
+layout: post
+title:  "Everyday sequences and series"
+date:   2023-11-30 10:05:58 +0800
+categories: maths
+---
+
 # Everyday sequences and series
 
 ## Taylor
@@ -13,10 +20,10 @@ $$ \sum_1^n{x} = \frac{n}{2}(n + 1) $$
 $$ \sum_1^n{x^2} = \frac{n}{6}(n + 1)(2n + 1) $$
 
 ## Geometric
-For the first n terms (up to $ r^{n-1} $
+For the first n terms (up to \( r^{n-1} \))
 
 $$ \sum_{k=0}^{n-1}{ar^k} = a\frac{1-r^n}{1-r} $$
 
-And in the limit as $ n \to \infty $, so long as ratio is <1:
+And in the limit as $$ n \to \infty $$, so long as ratio is <1:
 
 $$ \sum_{k=0}^{\infty}{ar^k} = \frac{a}{1-r} $$
