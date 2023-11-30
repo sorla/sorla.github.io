@@ -1,5 +1,6 @@
 theme: jekyll-theme-minimal
 title: Sorla's homepage
 description: Canine coding chaos galore!
+markdown: kramdown
 kramdown:
   math_engine: mathjax
