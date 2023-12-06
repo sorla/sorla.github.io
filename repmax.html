@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rep calculator</title>
+</head>
+
+<body>
+    <h1>1RM calculator</h1>
+
+    <script>
+        function onermest() {
+            test_weight = document.forms["weightform"]["weight"].value;
+            test_reps = document.forms["weightform"]["reps"].value;
+            onerm = repest(test_weight, test_reps, 1);
+            console.log(test_weight, test_reps);
+            document.getElementById("onerm").innerText = "1RM: " + onerm.toLocaleString(undefined, { maximumFractionDigits: 1 });
+            rep_wt_table = "<tr><th>Reps</th><th>Weight</th></tr>"
+            for (let i = 1; i < 10; i++) {
+                row = `<tr><td>${i}</td><td>${repest(onerm, 1, i).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</td></tr>\n`
+                rep_wt_table = rep_wt_table + row;
+            }
+            document.getElementById("repmax_table").innerHTML = rep_wt_table;
+
+            onerm_frac_table = "<tr><th>Frac 1RM</th><th>Weight</th></tr>"
+            for (let i = 0; i < 9; i++) {
+                f = 1 - i / 20
+                row = `<tr><td>${f.toLocaleString(undefined, { style: "percent", maximumFractionDigits: 1 })}</td><td>${(onerm * f).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</td></tr>\n`
+                onerm_frac_table = onerm_frac_table + row;
+            }
+            document.getElementById("onerm_frac_table").innerHTML = onerm_frac_table;
+        }
+
+        function repest(test_weight, test_reps, target_reps) {
+            return test_weight * (0.37081 + 0.67257 * Math.exp(-0.05499 * target_reps)) / (0.37081 + 0.67257 * Math.exp(-0.05499 * test_reps));
+        }
+    </script>
+    <style>
+        h2 {
+            background-color: darkseagreen;
+        }
+
+        .wt_label {
+            display: inline-block;
+            width: 4em;
+        }
+
+        table {
+            text-align: right;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        th {
+            width: 4em;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgb(214, 237, 214);
+        }
+    </style>
+    <form id="weightform">
+        <legend>
+            <h2>Rep max calc inputs</h2>
+        </legend>
+        <div><label for="weight" class="wt_label">Weight</label><input type="number" name="weight" id="weight" min="0"
+                max="1000" step="0.05">
+        </div>
+        <div><label for="reps" class="wt_label">Reps</label><input type="number" name="reps" id="reps" min="1" max="20">
+        </div>
+        <button type="button" onclick="onermest()">Calculate</button>
+    </form>
+    <h2>Results</h2>
+    <p id="onerm"></p>
+    <table id="repmax_table"></table>
+    <table id="onerm_frac_table"></table>
+
+</body>
+
+</html>
